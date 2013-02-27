@@ -1,5 +1,5 @@
 {
-	"name": "silverstripe/faqs",
+	"name": "sunnysideup/faqs",
 	"type": "silverstripe-module",
 	"description": "adds FAQ page and FAQ Holder page to your Silverstripe application",
 	"homepage": "http://www.silverstripe-webdevelopment.com",
