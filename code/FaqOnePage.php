@@ -22,7 +22,12 @@ class FaqOnePage extends Page {
 		$fields = parent::getCMSFields();
 		$fields->replaceField("Title", new TextField("Title", "Question"));
 		$fields->replaceField("MenuTitle", new TextField("MenuTitle", "Question - short version for menus"));
-		$fields->replaceField("Content", new HtmlEditorField("Content", "Answer", $rows = 7, $cols = 7));
+		$fields->replaceField("Content", /*
+### @@@@ UPGRADE REQUIRED @@@@ ###
+FIND: new HtmlEditorField
+NOTE:  $form, $maxLength, $rightTitle, $rows/$cols optional constructor arguments must now be set using setters on the instance of the field.  
+### @@@@ ########### @@@@ ###
+*/new HtmlEditorField("Content", "Answer", $rows = 7, $cols = 7));
 		return $fields;
 	}
 
