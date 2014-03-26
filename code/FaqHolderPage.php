@@ -34,12 +34,13 @@ class FaqHolderPage_Controller extends Page_Controller {
 	}
 
 	function FAQs() {
-		return /*
-### @@@@ UPGRADE REQUIRED @@@@ ###
-FIND: DataObject::get(
-NOTE:  - replace with ClassName::get(  
-### @@@@ ########### @@@@ ###
-*/DataObject::get("FaqOnePage", "ShowInMenus = 1 AND ParentID = ".$this->ID);
+		return FaqOnePage::get()
+			->filter(
+				array(
+					"ShowInMenus" => 1,
+					"ParentID" => $this->ID
+				)
+			);
 	}
 
 }
