@@ -7,13 +7,13 @@
  */
 class FaqHolderPage extends Page {
 
-	static $icon = "mysite/images/treeicons/FaqHolderPage";
+	private static $icon = "mysite/images/treeicons/FaqHolderPage";
 
-	//static $default_parent = '';
+	//private static $default_parent = '';
 
-	static $default_child = 'FaqOnePage';
+	private static $default_child = 'FaqOnePage';
 
-	static $allowed_children = array('FaqOnePage');
+	private static $allowed_children = array('FaqOnePage');
 
 	function getCMSFields() {
 		$fields = parent::getCMSFields();
@@ -35,7 +35,12 @@ class FaqHolderPage_Controller extends Page_Controller {
 
 	function FAQs() {
 		return FaqOnePage::get()
-			->filter(
+			/*
+### @@@@ UPGRADE REQUIRED @@@@ ###
+FIND: ->filter(
+NOTE: ArrayList filter method no longer modifies current list; only returns a new version. 
+### @@@@ ########### @@@@ ###
+*/->filter(
 				array(
 					"ShowInMenus" => 1,
 					"ParentID" => $this->ID

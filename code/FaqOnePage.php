@@ -5,29 +5,24 @@
  */
 class FaqOnePage extends Page {
 
-	static $icon = "mysite/images/treeicons/FaqOnePage";
+	private static $icon = "mysite/images/treeicons/FaqOnePage";
 
-	static $default_parent = 'FaqHolderPage';
+	private static $default_parent = 'FaqHolderPage';
 
-	static $allowed_children = "none";
+	private static $allowed_children = "none";
 
-	static $db = array();
+	private static $db = array();
 
-	static $has_one = array();
+	private static $has_one = array();
 
 
-	//static $has_many = array();
+	//private static $has_many = array();
 
 	function getCMSFields() {
 		$fields = parent::getCMSFields();
 		$fields->replaceField("Title", new TextField("Title", "Question"));
 		$fields->replaceField("MenuTitle", new TextField("MenuTitle", "Question - short version for menus"));
-		$fields->replaceField("Content", /*
-### @@@@ UPGRADE REQUIRED @@@@ ###
-FIND: new HtmlEditorField
-NOTE:  $form, $maxLength, $rightTitle, $rows/$cols optional constructor arguments must now be set using setters on the instance of the field.  
-### @@@@ ########### @@@@ ###
-*/new HtmlEditorField("Content", "Answer", $rows = 7, $cols = 7));
+		$fields->replaceField("Content", new HtmlEditorField("Content", "Answer"));
 		return $fields;
 	}
 
