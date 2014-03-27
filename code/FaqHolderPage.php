@@ -9,6 +9,8 @@ class FaqHolderPage extends Page {
 
 	private static $icon = "mysite/images/treeicons/FaqHolderPage";
 
+	private static $description =  ;
+
 	//private static $default_parent = '';
 
 	private static $default_child = 'FaqOnePage';

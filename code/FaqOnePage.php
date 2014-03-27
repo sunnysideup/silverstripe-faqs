@@ -7,6 +7,8 @@ class FaqOnePage extends Page {
 
 	private static $icon = "mysite/images/treeicons/FaqOnePage";
 
+	private static $description = "Individual FAQ Page, dispalys the answer to one question";
+
 	private static $default_parent = 'FaqHolderPage';
 
 	private static $allowed_children = "none";
