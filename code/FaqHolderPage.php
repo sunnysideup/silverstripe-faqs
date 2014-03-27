@@ -9,7 +9,7 @@ class FaqHolderPage extends Page {
 
 	private static $icon = "mysite/images/treeicons/FaqHolderPage";
 
-	private static $description =  ;
+	private static $description =  "A list of Frequently Asked Questions" ;
 
 	//private static $default_parent = '';
 
@@ -40,7 +40,7 @@ class FaqHolderPage_Controller extends Page_Controller {
 			/*
 ### @@@@ UPGRADE REQUIRED @@@@ ###
 FIND: ->filter(
-NOTE: ArrayList filter method no longer modifies current list; only returns a new version. 
+NOTE: ArrayList filter method no longer modifies current list; only returns a new version.
 ### @@@@ ########### @@@@ ###
 */->filter(
 				array(
