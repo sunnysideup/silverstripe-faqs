@@ -2,8 +2,8 @@
 	"name": "sunnysideup/faqs",
 	"type": "silverstripe-module",
 	"description": "adds FAQ page and FAQ Holder page to your Silverstripe application",
-	"homepage": "http://www.silverstripe-webdevelopment.com",
-	"keywords": ["faqs", "silverstripe"],
+	"homepage": "https://github.com/sunnysideup/silverstripe-faqs",
+	"keywords": ["faqs", "silverstripe", "frequently asked questions"],
 	"license": "Sunny Side Up (BSD-3-Clause and CUSTOM)",
 	"authors":[
 		{
@@ -14,7 +14,10 @@
 		}
 	],
 	"require":{
-		"php": ">=5.3.2",
-		"silverstripe/framework": "~2.4"
+		"silverstripe/framework": "~3.1",
+		"silverstripe/cms": "~3.1",
+	},
+	"extra": {
+		"installer-name": "faqs"
 	}
 }
