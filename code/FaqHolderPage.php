@@ -37,12 +37,7 @@ class FaqHolderPage_Controller extends Page_Controller {
 
 	function FAQs() {
 		return FaqOnePage::get()
-			/*
-### @@@@ UPGRADE REQUIRED @@@@ ###
-FIND: ->filter(
-NOTE: ArrayList filter method no longer modifies current list; only returns a new version.
-### @@@@ ########### @@@@ ###
-*/->filter(
+			->filter(
 				array(
 					"ShowInMenus" => 1,
 					"ParentID" => $this->ID
