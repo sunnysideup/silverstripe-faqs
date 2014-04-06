@@ -1,8 +1,8 @@
 <h1>$Title</h1>
 $Content
 <ul id="FAQs">
-<% with/loop FAQs %>
+<% loop FAQs %>
 	<% include FaqOneQuestion %>
-<% end_with/loop %>
+<% end_loop %>
 </ul>
 $Form
