@@ -17,6 +17,18 @@ class FaqHolderPage extends Page {
 
 	private static $allowed_children = array('FaqOnePage');
 
+	/**
+	 * Standard SS variable.
+	 */
+	private static $singular_name = "FAQ Holder Page";
+		function i18n_singular_name() { return _t("FAQHolderPage.SINGULARNAME", "FAQ Holder Page");}
+
+	/**
+	 * Standard SS variable.
+	 */
+	private static $plural_name = "FAQ Holder Pages";
+		function i18n_plural_name() { return _t("FAQHolderPage.PLURALNAME", "FAQ Holder Pages");}
+
 	function getCMSFields() {
 		$fields = parent::getCMSFields();
 		return $fields;

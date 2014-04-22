@@ -17,6 +17,17 @@ class FaqOnePage extends Page {
 
 	private static $has_one = array();
 
+		/**
+	 * Standard SS variable.
+	 */
+	private static $singular_name = "FAQ Page";
+		function i18n_singular_name() { return _t("FAQPage.SINGULARNAME", "FAQ Page");}
+
+	/**
+	 * Standard SS variable.
+	 */
+	private static $plural_name = "FAQ Pages";
+		function i18n_plural_name() { return _t("FAQPage.PLURALNAME", "FAQ Pages");}
 
 	//private static $has_many = array();
 
