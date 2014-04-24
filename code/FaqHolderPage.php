@@ -44,7 +44,7 @@ class FaqHolderPage_Controller extends Page_Controller {
 		parent::init();
 		Requirements::javascript(THIRDPARTY_DIR."/jquery/jquery.js");
 		Requirements::javascript("faqs/javascript/FaqHolderPage.js");
-		Requirements::themedCSS("FaqHolderPage");
+		Requirements::themedCSS("FaqHolderPage", "faqs");
 	}
 
 	function FAQs() {
