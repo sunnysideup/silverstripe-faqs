@@ -29,7 +29,7 @@ var FaqHolderPage = {
 				var parent = jQuery(this).parents("li");
 				var answer = parent.find(FaqHolderPage.answersSelector);
 				question.toggleClass(FaqHolderPage.openQuestion);
-				jQuery(FaqHolderPage.answersLinkSelector).toggleClass(FaqHolderPage.closeQuestion);
+				jQuery(parent.find(".FaqQuestion")).toggleClass(FaqHolderPage.openQuestion);
 				answer.toggleClass(FaqHolderPage.closeQuestion).slideToggle();
 			}
 		);
