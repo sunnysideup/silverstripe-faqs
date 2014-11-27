@@ -79,7 +79,13 @@ class FaqHolderPage_Controller extends Page_Controller {
 				$array += $childGroups->map("ID", "ID");
 			}
 		}
-		return FaqOnePage::get()->filter(array("ParentID" => $array, "ShowInSearch" => 1));
+		return FaqOnePage::get()
+			->filter(array("ParentID" => $array, "ShowInSearch" => 1))
+			->leftJoin("SiteTree", "SiteTree.ParentID = MyParent.ID", "MyParent")
+			->leftJoin("SiteTree", "MyParent.ParentID = MyGrandParent.ID", "MyGrandParent")
+			->leftJoin("SiteTree", "MyGrandParent.ParentID = MyGreatGrandParent.ID", "MyGreatGrandParent")
+			->leftJoin("SiteTree", "MyGreatGrandParent.ParentID = MyGreatGreatGrandParent.ID", "MyGreatGreatGrandParent")
+			->sort("MyGreatGreatGrandParent.Sort ASC, MyGreatGrandParent.Sort ASC, MyGrandParent.Sort ASC, MyParent.Sort ASC, SiteTree.Sort ASC");
 	}
 
 }
