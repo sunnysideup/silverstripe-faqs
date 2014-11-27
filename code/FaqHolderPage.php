@@ -15,7 +15,7 @@ class FaqHolderPage extends Page {
 
 	private static $default_child = 'FaqOnePage';
 
-	private static $allowed_children = array('FaqOnePage');
+	private static $allowed_children = array('FaqHolderPage', 'FaqOnePage');
 
 	/**
 	 * Standard SS variable.
@@ -29,9 +29,29 @@ class FaqHolderPage extends Page {
 	private static $plural_name = "FAQ Holder Pages";
 		function i18n_plural_name() { return _t("FAQHolderPage.PLURALNAME", "FAQ Holder Pages");}
 
-	function getCMSFields() {
-		$fields = parent::getCMSFields();
-		return $fields;
+	/**
+	 * Returns children FAQHolderPage pages of this FAQHolderPage.
+	 *
+	 * @param Int $maxRecursiveLevel - maximum depth , e.g. 1 = one level down - so no Child Groups are returned...
+	 * @param Int $numberOfRecursions - current level of depth. DONT provide this variable...
+	 * @return ArrayList (FAQHolderPages)
+	 */
+	function ChildGroups($maxRecursiveLevel = 99, $numberOfRecursions = 0) {
+		$arrayList = ArrayList::create();
+		if($numberOfRecursions < $maxRecursiveLevel){
+			$children = FAQHolderPage::get()->filter(array("ParentID" => $this->ID));
+			if($children->count()){
+				foreach($children as $child){
+					$arrayList->push($child);
+					$arrayList->merge($child->ChildGroups($maxRecursiveLevel, $numberOfRecursions++));
+				}
+			}
+		}
+
+		if(!$arrayList instanceof ArrayList) {
+			user_error("We expect an array list as output");
+		}
+		return $arrayList;
 	}
 
 }
@@ -47,14 +67,19 @@ class FaqHolderPage_Controller extends Page_Controller {
 		Requirements::themedCSS("FaqHolderPage", "faqs");
 	}
 
+	/**
+	 * returns all underlying FaqOnePage pages...
+	 * for use in templates
+	 * @return DataList | Null
+	 */
 	function FAQs() {
-		return FaqOnePage::get()
-			->filter(
-				array(
-					"ShowInMenus" => 1,
-					"ParentID" => $this->ID
-				)
-			);
+		$array = array($this->ID => $this->ID);
+		if($childGroups = $this->ChildGroups(4)) {
+			if($childGroups->count()) {
+				$array += $childGroups->map("ID", "ID");
+			}
+		}
+		return FaqOnePage::get()->filter(array("ParentID" => $array, "ShowInSearch" => 1));
 	}
 
 }

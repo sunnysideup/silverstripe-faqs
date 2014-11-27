@@ -49,7 +49,5 @@ class FaqOnePage_Controller extends Page_Controller {
 		parent::init();
 	}
 
-
-
 }
 
