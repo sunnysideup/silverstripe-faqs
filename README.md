@@ -2,7 +2,9 @@ Frequently Asked Questions
 ================================================================================
 
 Add frequently asked questions pages to your
-Silverstripe website.
+Silverstripe website.  Add one to many layers of Frequently Asked Questions
+to your site. Each holder page will summarise ALL FAQs listed under it
+(even in child holder pages)
 
 Developer
 -----------------------------------------------
@@ -33,7 +35,5 @@ Installation Instructions
 In the _config/ folder of this module
 you can usually find some examples of config options (if any).
 
-3. review css and templates and see if you need to theme it
-(rather than using the "unthemed" default provided.
 
 

@@ -3,7 +3,7 @@
 	"type": "silverstripe-module",
 	"description": "adds FAQ page and FAQ Holder page to your Silverstripe application",
 	"homepage": "https://github.com/sunnysideup/silverstripe-faqs",
-	"keywords": ["faqs", "silverstripe", "frequently asked questions"],
+	"keywords": ["faqs", "silverstripe", "frequently asked questions", "hierarchy", "summarise"],
 	"license": "Sunny Side Up (BSD-3-Clause and CUSTOM)",
 	"authors":[
 		{
