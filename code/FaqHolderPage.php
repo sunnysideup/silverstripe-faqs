@@ -30,6 +30,20 @@ class FaqHolderPage extends Page {
 		function i18n_plural_name() { return _t("FAQHolderPage.PLURALNAME", "FAQ Holder Pages");}
 
 	/**
+	 * The holder page class in use.
+	 * You can extends this Class and change this value.
+	 * @var String
+	 */
+	protected $holderPage = "FAQHolderPage";
+
+	/**
+	 * The item page class in use.
+	 * You can extends this Class and change this value.
+	 * @var String
+	 */
+	protected $entryPage = "FAQOnePage";
+
+	/**
 	 * Returns children FAQHolderPage pages of this FAQHolderPage.
 	 *
 	 * @param Int $maxRecursiveLevel - maximum depth , e.g. 1 = one level down - so no Child Groups are returned...
@@ -39,7 +53,8 @@ class FaqHolderPage extends Page {
 	function ChildGroups($maxRecursiveLevel = 99, $numberOfRecursions = 0) {
 		$arrayList = ArrayList::create();
 		if($numberOfRecursions < $maxRecursiveLevel){
-			$children = FAQHolderPage::get()->filter(array("ParentID" => $this->ID));
+			$className = $this->getHolderPage();
+			$children = $className::get()->filter(array("ParentID" => $this->ID));
 			if($children->count()){
 				foreach($children as $child){
 					$arrayList->push($child);
@@ -47,11 +62,42 @@ class FaqHolderPage extends Page {
 				}
 			}
 		}
-
 		if(!$arrayList instanceof ArrayList) {
 			user_error("We expect an array list as output");
 		}
 		return $arrayList;
+	}
+
+	/**
+	 * sets the classname for pages that are holder pages
+	 * @param String $name
+	 */
+	public function setHolderPage($name) {
+		$this->holderPage = $name;
+	}
+
+	/**
+	 * gets the classname for pages that are holder pages
+	 * @return String
+	 */
+	public function getHolderPage() {
+		return $this->holderPage;
+	}
+
+	/**
+	 * sets the classname for pages that are individual items
+	 * @param String $name
+	 */
+	public function setEntryName($name) {
+		$this->entryPage;
+	}
+
+	/**
+	 * gets the classname for pages that are individual items
+	 * @return String
+	 */
+	public function getEntryName() {
+		return $this->entryPage;
 	}
 
 }
@@ -72,7 +118,7 @@ class FaqHolderPage_Controller extends Page_Controller {
 	 * for use in templates
 	 * @return DataList | Null
 	 */
-	function FAQs() {
+	function entries() {
 		$array = array($this->ID => $this->ID);
 		if($childGroups = $this->ChildGroups(4)) {
 			if($childGroups->count()) {
@@ -83,7 +129,8 @@ class FaqHolderPage_Controller extends Page_Controller {
 		if(Versioned::current_stage() == "Live") {
 			$stage = "_Live";
 		}
-		return FaqOnePage::get()
+		$className = $this->dataRecord->getEntryName();
+		return $className::get()
 			->filter(array("ParentID" => $array, "ShowInSearch" => 1))
 			->leftJoin("SiteTree".$stage, "SiteTree".$stage.".ParentID = MyParent.ID", "MyParent")
 			->leftJoin("SiteTree".$stage, "MyParent.ParentID = MyGrandParent.ID", "MyGrandParent")
