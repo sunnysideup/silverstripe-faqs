@@ -118,7 +118,7 @@ class FaqHolderPage_Controller extends Page_Controller {
 	 * for use in templates
 	 * @return DataList | Null
 	 */
-	function entries() {
+	function Entries() {
 		$array = array($this->ID => $this->ID);
 		if($childGroups = $this->ChildGroups(4)) {
 			if($childGroups->count()) {
