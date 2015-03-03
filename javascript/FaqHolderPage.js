@@ -31,6 +31,14 @@ var FaqHolderPage = {
 				question.toggleClass(FaqHolderPage.openQuestion);
 				jQuery(parent.find(".FaqQuestion")).toggleClass(FaqHolderPage.openQuestion);
 				answer.toggleClass(FaqHolderPage.closeQuestion).slideToggle();
+				parent.siblings().find("h3").each(
+					function( index, value )  {
+						if(jQuery(this).hasClass(FaqHolderPage.openQuestion)){
+							jQuery(this).parents("li").find(".FaqQuestion").toggleClass(FaqHolderPage.openQuestion);
+							jQuery(this).parents("li").find(FaqHolderPage.answersSelector).toggleClass(FaqHolderPage.closeQuestion).slideToggle();
+						}
+					}
+				);
 			}
 		);
 	}
