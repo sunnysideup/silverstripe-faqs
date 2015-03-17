@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="FaqOnePage_Controller" namespace="" name="FaqOnePage_Controller" abstract="false" final="false" start="46" end="54">
+  <file path="/var/www/_modules/faqs/trunk/docs/en/phpdox/../../../code" file="FaqOnePage.php" realpath="/var/www/_modules/faqs/trunk/code/FaqOnePage.php" size="1387" time="2015-03-14T10:23:09+13:00" unixtime="1426281789" sha1="a169db82716f36d906efc34efb948823a6a49361" relative="code/FaqOnePage.php"/>
+  <extends full="Page_Controller" namespace="" name="Page_Controller"/>
+  <method name="init" start="50" end="52" abstract="false" final="false" static="false" visibility="public"/>
+</class>
