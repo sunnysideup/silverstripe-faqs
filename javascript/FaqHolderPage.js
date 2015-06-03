@@ -30,7 +30,7 @@ var FaqHolderPage = {
 				var question = jQuery(this);
 				var parent = jQuery(this).parents("li");
 				var answer = parent.find(FaqHolderPage.answersSelector);
-				if(question.hasClass(FaqHolderPage.openQuestion)) {
+				if(parent.hasClass(FaqHolderPage.openQuestion)) {
 					parent.removeClass(FaqHolderPage.openQuestion).addClass(FaqHolderPage.closedQuestion);
 					//question.removeClass(FaqHolderPage.openQuestion).addClass(FaqHolderPage.closedQuestion);
 					//answer.removeClass(FaqHolderPage.openQuestion).addClass(FaqHolderPage.closedQuestion).slideUp();
