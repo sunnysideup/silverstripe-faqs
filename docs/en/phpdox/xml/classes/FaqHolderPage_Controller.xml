@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="FaqHolderPage_Controller" namespace="" name="FaqHolderPage_Controller" abstract="false" final="false" start="105" end="142">
+  <file path="/var/www/_modules/faqs/trunk/docs/en/phpdox/../../../code" file="FaqHolderPage.php" realpath="/var/www/_modules/faqs/trunk/code/FaqHolderPage.php" size="4027" time="2015-03-14T10:23:09+13:00" unixtime="1426281789" sha1="5a7ec6441a867d79a91896f5c4ba6c2e56dc217b" relative="code/FaqHolderPage.php"/>
+  <extends full="Page_Controller" namespace="" name="Page_Controller"/>
+  <method name="init" start="109" end="114" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="Entries" start="121" end="140" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="returns all underlying FaqOnePage pages...">for use in templates</description>
+      <return description="| Null" type="object">
+        <type full="DataList" namespace="" name="DataList"/>
+      </return>
+    </docblock>
+  </method>
+</class>
