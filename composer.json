@@ -3,8 +3,10 @@
     "type": "silverstripe-module",
     "description": "adds FAQ page and FAQ Holder page to your Silverstripe application",
     "keywords": [
+        "Silverstripe-CMS",
+        "CMS",
+        "Silverstripe",
         "faqs",
-        "silverstripe",
         "frequently asked questions",
         "hierarchy",
         "summarise"
