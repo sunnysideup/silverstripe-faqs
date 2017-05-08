@@ -15,7 +15,9 @@ class FaqOnePage extends Page
 
     private static $allowed_children = "none";
 
-    private static $db = array();
+    private static $defaults = array(
+        'ShowInMenus' => 0
+    );
 
     private static $has_one = array();
 
