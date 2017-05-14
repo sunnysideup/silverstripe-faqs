@@ -69,9 +69,7 @@ class FaqHolderPage extends Page
                 }
             }
         }
-        if (!$arrayList instanceof ArrayList) {
-            user_error("We expect an array list as output");
-        }
+
         return $arrayList;
     }
 
@@ -132,7 +130,9 @@ class FaqHolderPage_Controller extends Page_Controller
         $array = array($this->ID => $this->ID);
         if ($childGroups = $this->ChildGroups(4)) {
             if ($childGroups->count()) {
-                $array += $childGroups->map("ID", "ID");
+                foreach($childGroups->map("ID", "ID") as $id) {
+                    $array[$id] = $id;
+                }
             }
         }
         $stage = '';
@@ -146,6 +146,18 @@ class FaqHolderPage_Controller extends Page_Controller
             ->leftJoin("SiteTree".$stage, "MyParent.ParentID = MyGrandParent.ID", "MyGrandParent")
             ->leftJoin("SiteTree".$stage, "MyGrandParent.ParentID = MyGreatGrandParent.ID", "MyGreatGrandParent")
             ->leftJoin("SiteTree".$stage, "MyGreatGrandParent.ParentID = MyGreatGreatGrandParent.ID", "MyGreatGreatGrandParent")
-            ->sort("MyGreatGreatGrandParent.Sort ASC, MyGreatGrandParent.Sort ASC, MyGrandParent.Sort ASC, MyParent.Sort ASC, SiteTree".$stage.".Sort ASC");
+            ->sort("
+                MyGreatGreatGrandParent.Sort ASC,
+                MyGreatGrandParent.Sort ASC,
+                MyGrandParent.Sort ASC,
+                MyParent.Sort ASC,
+                SiteTree".$stage.".Sort ASC"
+            );
+    }
+
+    function MyParentHolder()
+    {
+        $className = $this->dataRecord->getHolderPage();
+        return $className::get()->byID($this->ParentID);
     }
 }
