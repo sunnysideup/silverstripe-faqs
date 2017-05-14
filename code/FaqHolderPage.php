@@ -147,11 +147,11 @@ class FaqHolderPage_Controller extends Page_Controller
             ->leftJoin("SiteTree".$stage, "MyGrandParent.ParentID = MyGreatGrandParent.ID", "MyGreatGrandParent")
             ->leftJoin("SiteTree".$stage, "MyGreatGrandParent.ParentID = MyGreatGreatGrandParent.ID", "MyGreatGreatGrandParent")
             ->sort("
-                MyGreatGreatGrandParent.Sort ASC,
-                MyGreatGrandParent.Sort ASC,
-                MyGrandParent.Sort ASC,
-                MyParent.Sort ASC,
-                SiteTree".$stage.".Sort ASC"
+                MyGreatGreatGrandParent.Sort,
+                MyGreatGrandParent.Sort,
+                MyGrandParent.Sort,
+                MyParent.Sort,
+                SiteTree".$stage.".Sort"
             );
     }
 
