@@ -2,7 +2,7 @@
 @author: nicolaas[at]sunnysideup.co.nz
 */
 
-.FaqQuestion{color: red; }
-.FaqAnswer{color: red; display: none;}
-.FaqOne {color: red; background-color: transparent;-moz-border-radius: 5px;-webkit-border-radius: 5px;border: 1px solid transparent;padding: 10px;}
-	#FAQs .faqOpenQuestion{background-color: #e8e8e8;-moz-border-radius: 5px;-webkit-border-radius: 5px;border: 1px solid #a7a7a7;padding: 10px;}
+.faq-question{color: red; }
+.faq-answer{color: red; display: none;}
+.faq-one {color: red; background-color: transparent;-moz-border-radius: 5px;-webkit-border-radius: 5px;border: 1px solid transparent;padding: 10px;}
+    #FAQs .faqOpenQuestion{background-color: #e8e8e8;-moz-border-radius: 5px;-webkit-border-radius: 5px;border: 1px solid #a7a7a7;padding: 10px;}
