@@ -130,7 +130,7 @@ class FaqHolderPage_Controller extends Page_Controller
         $array = array($this->ID => $this->ID);
         if ($childGroups = $this->ChildGroups(4)) {
             if ($childGroups->count()) {
-                foreach($childGroups->map("ID", "ID") as $id) {
+                foreach ($childGroups->map("ID", "ID") as $id) {
                     $array[$id] = $id;
                 }
             }
@@ -146,7 +146,8 @@ class FaqHolderPage_Controller extends Page_Controller
             ->leftJoin("SiteTree".$stage, "MyParent.ParentID = MyGrandParent.ID", "MyGrandParent")
             ->leftJoin("SiteTree".$stage, "MyGrandParent.ParentID = MyGreatGrandParent.ID", "MyGreatGrandParent")
             ->leftJoin("SiteTree".$stage, "MyGreatGrandParent.ParentID = MyGreatGreatGrandParent.ID", "MyGreatGreatGrandParent")
-            ->sort("
+            ->sort(
+                "
                 MyGreatGreatGrandParent.Sort,
                 MyGreatGrandParent.Sort,
                 MyGrandParent.Sort,
@@ -155,7 +156,7 @@ class FaqHolderPage_Controller extends Page_Controller
             );
     }
 
-    function MyParentHolder()
+    public function MyParentHolder()
     {
         $className = $this->dataRecord->getHolderPage();
         return $className::get()->byID($this->ParentID);

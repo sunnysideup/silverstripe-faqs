@@ -21,7 +21,7 @@ class FaqOnePage extends Page
 
     private static $has_one = array();
 
-        /**
+    /**
      * Standard SS variable.
      */
     private static $singular_name = "FAQ Page";
