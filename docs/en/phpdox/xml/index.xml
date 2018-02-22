@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<index xmlns="http://xml.phpdox.net/src" basedir="/var/www/_modules/faqs/trunk">
-  <namespace name="">
-    <class name="FaqHolderPage" src="code/FaqHolderPage.php" description="author nicolaas[at]sunnysideup.co.nz description: holds FAQs and displays them nicely." xml="classes/FaqHolderPage.xml"/>
-    <class name="FaqHolderPage_Controller" src="code/FaqHolderPage.php" xml="classes/FaqHolderPage_Controller.xml"/>
-    <class name="FaqOnePage" src="code/FaqOnePage.php" description="author nicolaas[at] sunnysideup.co.nz description: individual FAQ page. Usually, these are not viewed as they can be read completely from the parent (FAQ HOLDER) page." xml="classes/FaqOnePage.xml"/>
-    <class name="FaqOnePage_Controller" src="code/FaqOnePage.php" xml="classes/FaqOnePage_Controller.xml"/>
-  </namespace>
-</index>
