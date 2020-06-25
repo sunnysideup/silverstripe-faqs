@@ -31,9 +31,9 @@ class FaqHolderPageController extends PageController
   * EXP: Check for best usage and inclusion of Jquery
   * ### @@@@ STOP REPLACEMENT @@@@ ###
   */
-        Requirements::javascript('silverstripe/admin: thirdparty/jquery/jquery.js');
-        Requirements::javascript("faqs/javascript/FaqHolderPage.js");
-        Requirements::themedCSS("FaqHolderPage", "faqs");
+        Requirements::javascript('sunnysideup/faqs: silverstripe/admin: thirdparty/jquery/jquery.js');
+        Requirements::javascript("sunnysideup/faqs: faqs/javascript/FaqHolderPage.js");
+        Requirements::themedCSS("sunnysideup/faqs: FaqHolderPage", "faqs");
     }
 
     /**
