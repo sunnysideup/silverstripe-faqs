@@ -1,6 +1,6 @@
 {
     "name": "sunnysideup/faqs",
-    "type": "silverstripe-module",
+    "type": "silverstripe-vendormodule",
     "description": "adds FAQ page and FAQ Holder page to your Silverstripe application",
     "keywords": [
         "Silverstripe-CMS",
