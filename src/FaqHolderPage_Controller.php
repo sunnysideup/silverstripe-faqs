@@ -63,7 +63,7 @@ class FaqHolderPageController extends PageController
             }
         }
         $stage = '';
-        if (Versioned::current_stage() == "Live") {
+        if (Versioned::get_stage() == "Live") {
             $stage = "_Live";
         }
 
