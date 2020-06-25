@@ -5,7 +5,16 @@
  */
 class FaqOnePage extends Page
 {
-    private static $icon = "mysite/images/treeicons/FaqOnePage";
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: app/images/ (case sensitive)
+  * NEW: app: images/ (COMPLEX)
+  * EXP: check for location
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
+    private static $icon = "app: images/treeicons/FaqOnePage";
 
     private static $description = "Individual FAQ Page, displays the answer to one question";
 
@@ -19,7 +28,7 @@ class FaqOnePage extends Page
         'ShowInMenus' => 0
     );
 
-    private static $has_one = array();
+    private static $has_one = [];
 
     /**
      * Standard SS variable.
@@ -46,7 +55,7 @@ class FaqOnePage extends Page
         $fields = parent::getCMSFields();
         $fields->replaceField("Title", new TextField("Title", "Question"));
         $fields->replaceField("MenuTitle", new TextField("MenuTitle", "Question - short version for menus"));
-        $fields->replaceField("Content", new HtmlEditorField("Content", "Answer"));
+        $fields->replaceField("Content", new HTMLEditorField("Content", "Answer"));
         return $fields;
     }
 }

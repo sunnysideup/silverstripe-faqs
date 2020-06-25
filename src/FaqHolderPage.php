@@ -7,7 +7,16 @@
  */
 class FaqHolderPage extends Page
 {
-    private static $icon = "mysite/images/treeicons/FaqHolderPage";
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: app/images/ (case sensitive)
+  * NEW: app: images/ (COMPLEX)
+  * EXP: check for location
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
+    private static $icon = "app: images/treeicons/FaqHolderPage";
 
     private static $description =  "A list of Frequently Asked Questions" ;
 
@@ -60,7 +69,25 @@ class FaqHolderPage extends Page
     {
         $arrayList = ArrayList::create();
         if ($numberOfRecursions < $maxRecursiveLevel) {
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: $className (case sensitive)
+  * NEW: $className (COMPLEX)
+  * EXP: Check if the class name can still be used as such
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
             $className = $this->getHolderPage();
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: $className (case sensitive)
+  * NEW: $className (COMPLEX)
+  * EXP: Check if the class name can still be used as such
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
             $children = $className::get()->filter(array("ParentID" => $this->ID));
             if ($children->count()) {
                 foreach ($children as $child) {

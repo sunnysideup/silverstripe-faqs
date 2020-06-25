@@ -1,6 +1,15 @@
 <?php
 
-class FaqHolderPage_Controller extends Page_Controller
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: _Controller extends Page_Controller (case sensitive)
+  * NEW: Controller extends PageController (COMPLEX)
+  * EXP: Remove the underscores in your classname - check all references!
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
+class FaqHolderPageController extends PageController
 {
 
 /**
@@ -13,7 +22,16 @@ class FaqHolderPage_Controller extends Page_Controller
     protected function init()
     {
         parent::init();
-        Requirements::javascript(THIRDPARTY_DIR."/jquery/jquery.js");
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: THIRDPARTY_DIR."/jquery/jquery.js" (case sensitive)
+  * NEW: 'silverstripe/admin: thirdparty/jquery/jquery.js' (COMPLEX)
+  * EXP: Check for best usage and inclusion of Jquery
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
+        Requirements::javascript('silverstripe/admin: thirdparty/jquery/jquery.js');
         Requirements::javascript("faqs/javascript/FaqHolderPage.js");
         Requirements::themedCSS("FaqHolderPage", "faqs");
     }
@@ -37,7 +55,25 @@ class FaqHolderPage_Controller extends Page_Controller
         if (Versioned::current_stage() == "Live") {
             $stage = "_Live";
         }
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: $className (case sensitive)
+  * NEW: $className (COMPLEX)
+  * EXP: Check if the class name can still be used as such
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
         $className = $this->dataRecord->getEntryName();
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: $className (case sensitive)
+  * NEW: $className (COMPLEX)
+  * EXP: Check if the class name can still be used as such
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
         return $className::get()
             ->filter(array("ParentID" => $array, "ShowInSearch" => 1))
             ->leftJoin("SiteTree".$stage, "SiteTree".$stage.".ParentID = MyParent.ID", "MyParent")
@@ -56,7 +92,25 @@ class FaqHolderPage_Controller extends Page_Controller
 
     public function MyParentHolder()
     {
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: $className (case sensitive)
+  * NEW: $className (COMPLEX)
+  * EXP: Check if the class name can still be used as such
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
         $className = $this->dataRecord->getHolderPage();
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: $className (case sensitive)
+  * NEW: $className (COMPLEX)
+  * EXP: Check if the class name can still be used as such
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
         return $className::get()->byID($this->ParentID);
     }
 }
