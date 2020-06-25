@@ -1,5 +1,10 @@
 <?php
 
+namespace Sunnysideup\Faqs;
+
+use PageController;
+
+
 
 /**
   * ### @@@@ START REPLACEMENT @@@@ ###

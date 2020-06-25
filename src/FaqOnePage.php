@@ -1,4 +1,11 @@
 <?php
+
+namespace Sunnysideup\Faqs;
+
+use Page;
+use TextField;
+use HTMLEditorField;
+
 /**
  *@author nicolaas[at] sunnysideup.co.nz
  *@description: individual FAQ page. Usually, these are not viewed as they can be read completely from the parent (FAQ HOLDER) page.

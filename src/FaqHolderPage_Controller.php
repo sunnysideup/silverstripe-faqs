@@ -1,5 +1,12 @@
 <?php
 
+namespace Sunnysideup\Faqs;
+
+use PageController;
+use Requirements;
+use Versioned;
+
+
 
 /**
   * ### @@@@ START REPLACEMENT @@@@ ###

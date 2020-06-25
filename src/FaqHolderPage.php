@@ -1,5 +1,11 @@
 <?php
 
+namespace Sunnysideup\Faqs;
+
+use Page;
+use ArrayList;
+
+
 /**
  *@author nicolaas[at]sunnysideup.co.nz
  *@description: holds FAQs and displays them nicely.
