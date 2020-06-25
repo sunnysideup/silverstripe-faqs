@@ -1,5 +1,7 @@
 <?php
 
+use SilverStripe\Dev\SapphireTest;
+
 class FaqsTest extends SapphireTest
 {
     protected $usesDatabase = false;

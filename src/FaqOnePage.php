@@ -3,8 +3,12 @@
 namespace Sunnysideup\Faqs;
 
 use Page;
-use TextField;
-use HTMLEditorField;
+
+
+use Sunnysideup\Faqs\FaqHolderPage;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
+
 
 /**
  *@author nicolaas[at] sunnysideup.co.nz
@@ -25,7 +29,7 @@ class FaqOnePage extends Page
 
     private static $description = "Individual FAQ Page, displays the answer to one question";
 
-    private static $default_parent = 'FaqHolderPage';
+    private static $default_parent = FaqHolderPage::class;
 
     private static $can_be_root = false;
 

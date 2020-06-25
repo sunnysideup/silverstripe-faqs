@@ -3,7 +3,11 @@
 namespace Sunnysideup\Faqs;
 
 use Page;
-use ArrayList;
+
+use Sunnysideup\Faqs\FaqOnePage;
+use Sunnysideup\Faqs\FaqHolderPage;
+use SilverStripe\ORM\ArrayList;
+
 
 
 /**
@@ -28,9 +32,9 @@ class FaqHolderPage extends Page
 
     //private static $default_parent = '';
 
-    private static $default_child = 'FaqOnePage';
+    private static $default_child = FaqOnePage::class;
 
-    private static $allowed_children = array('FaqHolderPage', 'FaqOnePage');
+    private static $allowed_children = array(FaqHolderPage::class, FaqOnePage::class);
 
     /**
      * Standard SS variable.

@@ -3,8 +3,12 @@
 namespace Sunnysideup\Faqs;
 
 use PageController;
-use Requirements;
-use Versioned;
+
+
+use SilverStripe\View\Requirements;
+use SilverStripe\Versioned\Versioned;
+use SilverStripe\CMS\Model\SiteTree;
+
 
 
 
@@ -83,10 +87,10 @@ class FaqHolderPageController extends PageController
   */
         return $className::get()
             ->filter(array("ParentID" => $array, "ShowInSearch" => 1))
-            ->leftJoin("SiteTree".$stage, "SiteTree".$stage.".ParentID = MyParent.ID", "MyParent")
-            ->leftJoin("SiteTree".$stage, "MyParent.ParentID = MyGrandParent.ID", "MyGrandParent")
-            ->leftJoin("SiteTree".$stage, "MyGrandParent.ParentID = MyGreatGrandParent.ID", "MyGreatGrandParent")
-            ->leftJoin("SiteTree".$stage, "MyGreatGrandParent.ParentID = MyGreatGreatGrandParent.ID", "MyGreatGreatGrandParent")
+            ->leftJoin(SiteTree::class.$stage, SiteTree::class.$stage.".ParentID = MyParent.ID", "MyParent")
+            ->leftJoin(SiteTree::class.$stage, "MyParent.ParentID = MyGrandParent.ID", "MyGrandParent")
+            ->leftJoin(SiteTree::class.$stage, "MyGrandParent.ParentID = MyGreatGrandParent.ID", "MyGreatGrandParent")
+            ->leftJoin(SiteTree::class.$stage, "MyGreatGrandParent.ParentID = MyGreatGreatGrandParent.ID", "MyGreatGreatGrandParent")
             ->sort(
                 "
                 MyGreatGreatGrandParent.Sort,
