@@ -2,7 +2,7 @@
 $Content
 <ul id="FAQs">
 <% loop Entries %>
-    <% include FaqOneQuestion %>
+    <% include Sunnysideup\Faqs\IncludesFaqOneQuestion %>
 <% end_loop %>
 </ul>
 $Form
