@@ -1,15 +1,35 @@
 <?php
+
+namespace Sunnysideup\Faqs;
+
+use Page;
+
+
+use Sunnysideup\Faqs\FaqHolderPage;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
+
+
 /**
  *@author nicolaas[at] sunnysideup.co.nz
  *@description: individual FAQ page. Usually, these are not viewed as they can be read completely from the parent (FAQ HOLDER) page.
  */
 class FaqOnePage extends Page
 {
-    private static $icon = "mysite/images/treeicons/FaqOnePage";
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: app/images/ (case sensitive)
+  * NEW: app: images/ (COMPLEX)
+  * EXP: check for location
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
+    private static $icon = "app: images/treeicons/FaqOnePage";
 
     private static $description = "Individual FAQ Page, displays the answer to one question";
 
-    private static $default_parent = 'FaqHolderPage';
+    private static $default_parent = FaqHolderPage::class;
 
     private static $can_be_root = false;
 
@@ -19,7 +39,7 @@ class FaqOnePage extends Page
         'ShowInMenus' => 0
     );
 
-    private static $has_one = array();
+    private static $has_one = [];
 
     /**
      * Standard SS variable.
@@ -46,15 +66,8 @@ class FaqOnePage extends Page
         $fields = parent::getCMSFields();
         $fields->replaceField("Title", new TextField("Title", "Question"));
         $fields->replaceField("MenuTitle", new TextField("MenuTitle", "Question - short version for menus"));
-        $fields->replaceField("Content", new HtmlEditorField("Content", "Answer"));
+        $fields->replaceField("Content", new HTMLEditorField("Content", "Answer"));
         return $fields;
     }
 }
 
-class FaqOnePage_Controller extends Page_Controller
-{
-    public function init()
-    {
-        parent::init();
-    }
-}

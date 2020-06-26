@@ -1,6 +1,6 @@
 {
     "name": "sunnysideup/faqs",
-    "type": "silverstripe-module",
+    "type": "silverstripe-vendormodule",
     "description": "adds FAQ page and FAQ Holder page to your Silverstripe application",
     "keywords": [
         "Silverstripe-CMS",
@@ -20,10 +20,18 @@
         }
     ],
     "require": {
-        "silverstripe/framework": "~3.6",
-        "silverstripe/cms": "~3.6"
+        "silverstripe/recipe-cms": "^4.4"
     },
     "extra": {
-        "installer-name": "faqs"
+        "expose": [
+            "client/javascript",
+            "client/images",
+            "client/css"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "Sunnysideup\\Faqs\\": "src/"
+        }
     }
 }
