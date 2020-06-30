@@ -4,101 +4,71 @@ namespace Sunnysideup\Faqs;
 
 use Page;
 
-use Sunnysideup\Faqs\FaqOnePage;
-use Sunnysideup\Faqs\FaqHolderPage;
 use SilverStripe\ORM\ArrayList;
-
-
 
 /**
  *@author nicolaas[at]sunnysideup.co.nz
  *@description: holds FAQs and displays them nicely.
- *
  */
 class FaqHolderPage extends Page
 {
+    /**
+     * The holder page class in use.
+     * You can extends this Class and change this value.
+     * @var string
+     */
+    protected $holderPage = FAQHolderPage::class;
 
-/**
-  * ### @@@@ START REPLACEMENT @@@@ ###
-  * WHY: automated upgrade
-  * OLD: app/images/ (case sensitive)
-  * NEW: app: images/ (COMPLEX)
-  * EXP: check for location
-  * ### @@@@ STOP REPLACEMENT @@@@ ###
-  */
-    private static $icon = "app: images/treeicons/FaqHolderPage";
+    /**
+     * The item page class in use.
+     * You can extends this Class and change this value.
+     * @var string
+     */
+    protected $entryPage = FAQOnePage::class;
 
-    private static $description =  "A list of Frequently Asked Questions" ;
+    private static $icon = 'sunnysideup/faqs: client/images/FaqHolderPage-file.png';
+
+    private static $description = 'A list of Frequently Asked Questions';
 
     //private static $default_parent = '';
 
     private static $default_child = FaqOnePage::class;
 
-    private static $allowed_children = array(FaqHolderPage::class, FaqOnePage::class);
+    private static $allowed_children = [FaqHolderPage::class, FaqOnePage::class];
 
     /**
      * Standard SS variable.
      */
-    private static $singular_name = "FAQ Holder Page";
+    private static $singular_name = 'FAQ Holder Page';
+
+    /**
+     * Standard SS variable.
+     */
+    private static $plural_name = 'FAQ Holder Pages';
+
     public function i18n_singular_name()
     {
-        return _t("FAQHolderPage.SINGULARNAME", "FAQ Holder Page");
+        return _t('FAQHolderPage.SINGULARNAME', 'FAQ Holder Page');
     }
 
-    /**
-     * Standard SS variable.
-     */
-    private static $plural_name = "FAQ Holder Pages";
     public function i18n_plural_name()
     {
-        return _t("FAQHolderPage.PLURALNAME", "FAQ Holder Pages");
+        return _t('FAQHolderPage.PLURALNAME', 'FAQ Holder Pages');
     }
-
-    /**
-     * The holder page class in use.
-     * You can extends this Class and change this value.
-     * @var String
-     */
-    protected $holderPage = "FAQHolderPage";
-
-    /**
-     * The item page class in use.
-     * You can extends this Class and change this value.
-     * @var String
-     */
-    protected $entryPage = "FAQOnePage";
 
     /**
      * Returns children FAQHolderPage pages of this FAQHolderPage.
      *
-     * @param Int $maxRecursiveLevel - maximum depth , e.g. 1 = one level down - so no Child Groups are returned...
-     * @param Int $numberOfRecursions - current level of depth. DONT provide this variable...
+     * @param int $maxRecursiveLevel - maximum depth , e.g. 1 = one level down - so no Child Groups are returned...
+     * @param int $numberOfRecursions - current level of depth. DONT provide this variable...
      * @return ArrayList (FAQHolderPages)
      */
     public function ChildGroups($maxRecursiveLevel = 99, $numberOfRecursions = 0)
     {
         $arrayList = ArrayList::create();
         if ($numberOfRecursions < $maxRecursiveLevel) {
-
-/**
-  * ### @@@@ START REPLACEMENT @@@@ ###
-  * WHY: automated upgrade
-  * OLD: $className (case sensitive)
-  * NEW: $className (COMPLEX)
-  * EXP: Check if the class name can still be used as such
-  * ### @@@@ STOP REPLACEMENT @@@@ ###
-  */
             $className = $this->getHolderPage();
-
-/**
-  * ### @@@@ START REPLACEMENT @@@@ ###
-  * WHY: automated upgrade
-  * OLD: $className (case sensitive)
-  * NEW: $className (COMPLEX)
-  * EXP: Check if the class name can still be used as such
-  * ### @@@@ STOP REPLACEMENT @@@@ ###
-  */
-            $children = $className::get()->filter(array("ParentID" => $this->ID));
+            $children = $className::get()->filter(['ParentID' => $this->ID]);
             if ($children->count()) {
                 foreach ($children as $child) {
                     $arrayList->push($child);
@@ -112,7 +82,7 @@ class FaqHolderPage extends Page
 
     /**
      * sets the classname for pages that are holder pages
-     * @param String $name
+     * @param string $name
      */
     public function setHolderPage($name)
     {
@@ -121,7 +91,7 @@ class FaqHolderPage extends Page
 
     /**
      * gets the classname for pages that are holder pages
-     * @return String
+     * @return string
      */
     public function getHolderPage()
     {
@@ -130,7 +100,7 @@ class FaqHolderPage extends Page
 
     /**
      * sets the classname for pages that are individual items
-     * @param String $name
+     * @param string $name
      */
     public function setEntryName($name)
     {
@@ -139,11 +109,10 @@ class FaqHolderPage extends Page
 
     /**
      * gets the classname for pages that are individual items
-     * @return String
+     * @return string
      */
     public function getEntryName()
     {
         return $this->entryPage;
     }
 }
-
