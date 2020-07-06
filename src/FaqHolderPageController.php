@@ -13,7 +13,7 @@ class FaqHolderPageController extends PageController
     /**
      * returns all underlying FaqOnePage pages...
      * for use in templates
-     * @return DataList | Null
+     * @return \SilverStripe\ORM\DataList | Null
      */
     public function Entries()
     {
