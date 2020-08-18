@@ -28,7 +28,6 @@ class FaqOnePage extends Page
         'ShowInMenus' => 0,
     ];
 
-    private static $has_one = [];
 
     /**
      * Standard SS variable.
