@@ -28,7 +28,6 @@ class FaqOnePage extends Page
         'ShowInMenus' => 0,
     ];
 
-
     /**
      * Standard SS variable.
      */
