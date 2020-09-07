@@ -24,7 +24,7 @@ class FaqHolderPage extends Page
      * You can extends this Class and change this value.
      * @var string
      */
-    protected $entryPage = FAQOnePage::class;
+    protected $entryPage = FaqOnePage::class;
 
     private static $icon = 'sunnysideup/faqs: client/images/FaqHolderPage-file.png';
 
