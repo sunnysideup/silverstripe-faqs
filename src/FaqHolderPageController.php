@@ -58,10 +58,6 @@ class FaqHolderPageController extends PageController
         parent::init();
         Requirements::javascript('silverstripe/admin: thirdparty/jquery/jquery.js');
         Requirements::javascript('sunnysideup/faqs: client/javascript/FaqHolderPage.js');
-        /**
-         * ### @@@@ START REPLACEMENT @@@@ ###
-         * WHY doesnt this work?
-         */
-        //Requirements::themedCSS("client/javascript/FaqHolderPage");
+        Requirements::themedCSS("FaqHolderPage");
     }
 }
