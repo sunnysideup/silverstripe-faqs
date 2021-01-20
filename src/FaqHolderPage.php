@@ -64,7 +64,7 @@ class FaqHolderPage extends Page
      * @param int $numberOfRecursions - current level of depth. DONT provide this variable...
      * @return ArrayList (FAQHolderPages)
      */
-    public function ChildGroups($maxRecursiveLevel = 99, $numberOfRecursions = 0)
+    public function ChildGroups(?int $maxRecursiveLevel = 99, ?string $filter = null): ArrayList
     {
         $arrayList = ArrayList::create();
         if ($numberOfRecursions < $maxRecursiveLevel) {
