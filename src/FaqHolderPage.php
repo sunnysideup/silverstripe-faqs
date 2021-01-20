@@ -12,6 +12,7 @@ use SilverStripe\ORM\ArrayList;
  */
 class FaqHolderPage extends Page
 {
+    private static $table_name = 'FaqHolderPage';
     /**
      * The holder page class in use.
      * You can extends this Class and change this value.
