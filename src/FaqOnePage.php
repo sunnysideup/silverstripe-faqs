@@ -14,6 +14,8 @@ use SilverStripe\Forms\TextField;
  */
 class FaqOnePage extends Page
 {
+    private static $table_name = 'FaqOnePage';
+
     private static $icon = 'sunnysideup/faqs: client/images/FaqOnePage-file.png';
 
     private static $description = 'Individual FAQ Page, displays the answer to one question';
