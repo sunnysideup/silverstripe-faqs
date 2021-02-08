@@ -12,7 +12,6 @@ use SilverStripe\ORM\ArrayList;
  */
 class FaqHolderPage extends Page
 {
-    private static $table_name = 'FaqHolderPage';
     /**
      * The holder page class in use.
      * You can extends this Class and change this value.
@@ -26,6 +25,8 @@ class FaqHolderPage extends Page
      * @var string
      */
     protected $entryPage = FaqOnePage::class;
+
+    private static $table_name = 'FaqHolderPage';
 
     private static $icon = 'sunnysideup/faqs: client/images/FaqHolderPage-file.png';
 
