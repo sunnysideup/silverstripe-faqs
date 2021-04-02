@@ -17,7 +17,7 @@ class FaqHolderPage extends Page
      * You can extends this Class and change this value.
      * @var string
      */
-    protected $holderPage = FAQHolderPage::class;
+    protected $holderPage = FaqHolderPage::class;
 
     /**
      * The item page class in use.
@@ -50,20 +50,20 @@ class FaqHolderPage extends Page
 
     public function i18n_singular_name()
     {
-        return _t('FAQHolderPage.SINGULARNAME', 'FAQ Holder Page');
+        return _t('FaqHolderPage.SINGULARNAME', 'FAQ Holder Page');
     }
 
     public function i18n_plural_name()
     {
-        return _t('FAQHolderPage.PLURALNAME', 'FAQ Holder Pages');
+        return _t('FaqHolderPage.PLURALNAME', 'FAQ Holder Pages');
     }
 
     /**
-     * Returns children FAQHolderPage pages of this FAQHolderPage.
+     * Returns children FaqHolderPage pages of this FaqHolderPage.
      *
      * @param int $maxRecursiveLevel - maximum depth , e.g. 1 = one level down - so no Child Groups are returned...
      * @param int $filter - current level of depth. DONT provide this variable...
-     * @return ArrayList (FAQHolderPages)
+     * @return ArrayList (FaqHolderPages)
      */
     public function ChildGroups(?int $maxRecursiveLevel = 99, ?string $filter = null): ArrayList
     {
