@@ -68,7 +68,7 @@ class FaqHolderPage extends Page
         if ($numberOfRecursions < $maxRecursiveLevel) {
             $className = $this->getHolderPage();
             $children = $className::get()->filter(['ParentID' => $this->ID]);
-            if( !empty($filter)) {
+            if (! empty($filter)) {
                 $children = $children->filter($filter);
             }
             if ($children->count()) {
