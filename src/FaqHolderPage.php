@@ -60,21 +60,22 @@ class FaqHolderPage extends Page
 
     /**
      * Returns children FaqHolderPage pages of this FaqHolderPage.
-     *
-     * @param int $maxRecursiveLevel - maximum depth , e.g. 1 = one level down - so no Child Groups are returned...
-     * @param int $filter - current level of depth. DONT provide this variable...
      * @return ArrayList (FaqHolderPages)
      */
-    public function ChildGroups(?int $maxRecursiveLevel = 99, ?string $filter = null): ArrayList
+    public function ChildGroups(?int $maxRecursiveLevel = 99, ?int $numberOfRecursions = 0, $filter = null): ArrayList
     {
         $arrayList = ArrayList::create();
         if ($numberOfRecursions < $maxRecursiveLevel) {
             $className = $this->getHolderPage();
             $children = $className::get()->filter(['ParentID' => $this->ID]);
+            if( !empty($filter)) {
+                $children = $children->filter($filter);
+            }
             if ($children->count()) {
                 foreach ($children as $child) {
                     $arrayList->push($child);
-                    $arrayList->merge($child->ChildGroups($maxRecursiveLevel, $numberOfRecursions++));
+                    ++$numberOfRecursions;
+                    $arrayList->merge($child->ChildGroups($maxRecursiveLevel, $numberOfRecursions, $filter));
                 }
             }
         }
