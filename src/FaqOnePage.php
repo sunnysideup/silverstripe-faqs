@@ -3,8 +3,6 @@
 namespace Sunnysideup\Faqs;
 
 use Page;
-
-
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\TextField;
 
@@ -58,6 +56,7 @@ class FaqOnePage extends Page
         $fields->replaceField('Title', new TextField('Title', 'Question'));
         $fields->replaceField('MenuTitle', new TextField('MenuTitle', 'Question - short version for menus'));
         $fields->replaceField('Content', new HTMLEditorField('Content', 'Answer'));
+
         return $fields;
     }
 }

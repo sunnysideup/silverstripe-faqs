@@ -3,8 +3,6 @@
 namespace Sunnysideup\Faqs;
 
 use PageController;
-
-
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\Requirements;
 
@@ -12,8 +10,9 @@ class FaqHolderPageController extends PageController
 {
     /**
      * returns all underlying FaqOnePage pages...
-     * for use in templates
-     * @return \SilverStripe\ORM\DataList|null
+     * for use in templates.
+     *
+     * @return null|\SilverStripe\ORM\DataList
      */
     public function Entries()
     {
@@ -26,11 +25,12 @@ class FaqHolderPageController extends PageController
             }
         }
         $stage = '';
-        if (Versioned::get_stage() === 'Live') {
+        if ('Live' === Versioned::get_stage()) {
             $stage = '_Live';
         }
 
         $className = $this->dataRecord->getEntryName();
+
         return $className::get()
             ->filter(['ParentID' => $array, 'ShowInSearch' => 1])
             ->leftJoin('SiteTree' . $stage, 'SiteTree' . $stage . '.ParentID = MyParent.ID', 'MyParent')
@@ -44,12 +44,14 @@ class FaqHolderPageController extends PageController
                 MyGrandParent.Sort,
                 MyParent.Sort,
                 SiteTree' . $stage . '.Sort'
-            );
+            )
+        ;
     }
 
     public function MyParentHolder()
     {
         $className = $this->dataRecord->getHolderPage();
+
         return $className::get()->byID($this->ParentID);
     }
 

@@ -3,7 +3,6 @@
 namespace Sunnysideup\Faqs;
 
 use Page;
-
 use SilverStripe\ORM\ArrayList;
 
 /**
@@ -15,6 +14,7 @@ class FaqHolderPage extends Page
     /**
      * The holder page class in use.
      * You can extends this Class and change this value.
+     *
      * @var string
      */
     protected $holderPage = FaqHolderPage::class;
@@ -22,6 +22,7 @@ class FaqHolderPage extends Page
     /**
      * The item page class in use.
      * You can extends this Class and change this value.
+     *
      * @var string
      */
     protected $entryPage = FaqOnePage::class;
@@ -60,6 +61,9 @@ class FaqHolderPage extends Page
 
     /**
      * Returns children FaqHolderPage pages of this FaqHolderPage.
+     *
+     * @param null|mixed $filter
+     *
      * @return ArrayList (FaqHolderPages)
      */
     public function ChildGroups(?int $maxRecursiveLevel = 99, ?int $numberOfRecursions = 0, $filter = null): ArrayList
@@ -84,7 +88,8 @@ class FaqHolderPage extends Page
     }
 
     /**
-     * sets the classname for pages that are holder pages
+     * sets the classname for pages that are holder pages.
+     *
      * @param string $name
      */
     public function setHolderPage($name)
@@ -93,7 +98,8 @@ class FaqHolderPage extends Page
     }
 
     /**
-     * gets the classname for pages that are holder pages
+     * gets the classname for pages that are holder pages.
+     *
      * @return string
      */
     public function getHolderPage()
@@ -102,7 +108,8 @@ class FaqHolderPage extends Page
     }
 
     /**
-     * sets the classname for pages that are individual items
+     * sets the classname for pages that are individual items.
+     *
      * @param string $name
      */
     public function setEntryName($name)
@@ -111,7 +118,8 @@ class FaqHolderPage extends Page
     }
 
     /**
-     * gets the classname for pages that are individual items
+     * gets the classname for pages that are individual items.
+     *
      * @return string
      */
     public function getEntryName()
