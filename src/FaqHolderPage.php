@@ -75,7 +75,7 @@ class FaqHolderPage extends Page
             if (! empty($filter)) {
                 $children = $children->filter($filter);
             }
-            if ($children->count()) {
+            if ($children->exists()) {
                 foreach ($children as $child) {
                     $arrayList->push($child);
                     ++$numberOfRecursions;

@@ -18,7 +18,7 @@ class FaqHolderPageController extends PageController
     {
         $array = [$this->ID => $this->ID];
         if ($childGroups = $this->ChildGroups(4)) {
-            if ($childGroups->count()) {
+            if ($childGroups->exists()) {
                 foreach ($childGroups->map('ID', 'ID') as $id) {
                     $array[$id] = $id;
                 }
