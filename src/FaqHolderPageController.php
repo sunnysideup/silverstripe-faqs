@@ -17,7 +17,8 @@ class FaqHolderPageController extends PageController
     public function Entries()
     {
         $array = [$this->ID => $this->ID];
-        if ($childGroups = $this->ChildGroups(4)) {
+        $childGroups = $this->ChildGroups(4);
+        if ($childGroups) {
             if ($childGroups->exists()) {
                 foreach ($childGroups->map('ID', 'ID') as $id) {
                     $array[$id] = $id;
