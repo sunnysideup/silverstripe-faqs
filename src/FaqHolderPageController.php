@@ -53,7 +53,7 @@ class FaqHolderPageController extends PageController
     {
         $className = $this->dataRecord->getHolderPage();
 
-        return $className::get()->byID($this->ParentID);
+        return $className::get_by_id($this->ParentID);
     }
 
     protected function init()
