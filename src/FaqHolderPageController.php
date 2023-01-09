@@ -59,7 +59,7 @@ class FaqHolderPageController extends PageController
     protected function init()
     {
         parent::init();
-        Requirements::javascript('silverstripe/admin: thirdparty/jquery/jquery.js');
+        Requirements::javascript('https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js');
         Requirements::javascript('sunnysideup/faqs: client/javascript/FaqHolderPage.js');
         Requirements::themedCSS('client/css/FaqHolderPage');
     }
