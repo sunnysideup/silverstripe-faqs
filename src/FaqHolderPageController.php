@@ -6,6 +6,13 @@ use PageController;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\Requirements;
 
+/**
+ * Class \Sunnysideup\Faqs\FaqHolderPageController
+ *
+ * @property \Sunnysideup\Faqs\FaqHolderPage $dataRecord
+ * @method \Sunnysideup\Faqs\FaqHolderPage data()
+ * @mixin \Sunnysideup\Faqs\FaqHolderPage
+ */
 class FaqHolderPageController extends PageController
 {
     /**

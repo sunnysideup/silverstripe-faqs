@@ -7,8 +7,8 @@ use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\TextField;
 
 /**
- *@author nicolaas[at] sunnysideup.co.nz
- *@description: individual FAQ page. Usually, these are not viewed as they can be read completely from the parent (FAQ HOLDER) page.
+ * Class \Sunnysideup\Faqs\FaqOnePage
+ *
  */
 class FaqOnePage extends Page
 {

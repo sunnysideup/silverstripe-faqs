@@ -6,8 +6,8 @@ use Page;
 use SilverStripe\ORM\ArrayList;
 
 /**
- *@author nicolaas[at]sunnysideup.co.nz
- *@description: holds FAQs and displays them nicely.
+ * Class \Sunnysideup\Faqs\FaqHolderPage
+ *
  */
 class FaqHolderPage extends Page
 {
