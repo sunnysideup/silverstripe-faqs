@@ -3,6 +3,9 @@
 namespace Sunnysideup\Faqs;
 
 use PageController;
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Core\Injector\Injector;
+use SilverStripe\ORM\DataObject;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\Requirements;
 
@@ -32,26 +35,24 @@ class FaqHolderPageController extends PageController
                 }
             }
         }
-        $stage = '';
-        if ('Live' === Versioned::get_stage()) {
-            $stage = '_Live';
-        }
+        $singleton = DataObject::singleton(SiteTree::class);
+        $siteTreeTableName = $singleton->stageTable($singleton->config()->table_name, Versioned::get_stage());
 
         $className = $this->dataRecord->getEntryName();
 
         return $className::get()
             ->filter(['ParentID' => $array, 'ShowInSearch' => 1])
-            ->leftJoin('SiteTree' . $stage, 'SiteTree' . $stage . '.ParentID = MyParent.ID', 'MyParent')
-            ->leftJoin('SiteTree' . $stage, 'MyParent.ParentID = MyGrandParent.ID', 'MyGrandParent')
-            ->leftJoin('SiteTree' . $stage, 'MyGrandParent.ParentID = MyGreatGrandParent.ID', 'MyGreatGrandParent')
-            ->leftJoin('SiteTree' . $stage, 'MyGreatGrandParent.ParentID = MyGreatGreatGrandParent.ID', 'MyGreatGreatGrandParent')
+            ->leftJoin('' . $siteTreeTableName, '' . $siteTreeTableName . '.ParentID = MyParent.ID', 'MyParent')
+            ->leftJoin('' . $siteTreeTableName, 'MyParent.ParentID = MyGrandParent.ID', 'MyGrandParent')
+            ->leftJoin('' . $siteTreeTableName, 'MyGrandParent.ParentID = MyGreatGrandParent.ID', 'MyGreatGrandParent')
+            ->leftJoin('' . $siteTreeTableName, 'MyGreatGrandParent.ParentID = MyGreatGreatGrandParent.ID', 'MyGreatGreatGrandParent')
             ->sort(
                 '
                 MyGreatGreatGrandParent.Sort,
                 MyGreatGrandParent.Sort,
                 MyGrandParent.Sort,
                 MyParent.Sort,
-                SiteTree' . $stage . '.Sort'
+                SiteTree' . $siteTreeTableName . '.Sort'
             )
         ;
     }
