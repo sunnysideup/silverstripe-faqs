@@ -60,6 +60,8 @@ class FaqHolderPage extends Page
         return _t('FaqHolderPage.PLURALNAME', 'FAQ Holder Pages');
     }
 
+    protected int $numberOfRecursionsGroups = 0;
+
     /**
      * Returns children FaqHolderPage pages of this FaqHolderPage.
      *
@@ -67,20 +69,21 @@ class FaqHolderPage extends Page
      *
      * @return ArrayList (FaqHolderPages)
      */
-    public function ChildGroups(?int $maxRecursiveLevel = 99, ?int $numberOfRecursions = 0, $filter = null): ArrayList
+    public function ChildGroups(?int $maxRecursiveLevel = 99, $filter = null): ArrayList
     {
         $arrayList = ArrayList::create();
-        if ($numberOfRecursions < $maxRecursiveLevel) {
+
+        if ($this->numberOfRecursionsGroups < $maxRecursiveLevel) {
             $className = $this->getHolderPage();
             $children = $className::get()->filter(['ParentID' => $this->ID]);
             if (! empty($filter)) {
                 $children = $children->filter($filter);
             }
             if ($children->exists()) {
+                ++$this->numberOfRecursionsGroups;
                 foreach ($children as $child) {
                     $arrayList->push($child);
-                    ++$numberOfRecursions;
-                    $arrayList->merge($child->ChildGroups($maxRecursiveLevel, $numberOfRecursions, $filter));
+                    $arrayList->merge($child->ChildGroups($maxRecursiveLevel, $filter));
                 }
             }
         }
@@ -95,11 +98,19 @@ class FaqHolderPage extends Page
      *
      * @return ArrayList (FaqHolderPages)
      */
-    public function Entries(?int $maxRecursiveLevel = 99, ?int $numberOfRecursions = 0, $filter = null): DataList
+    public function Entries(?int $maxRecursiveLevel = 99,  ?array $filter = null, ?array $groupFilter = null): DataList
     {
         $entryClassName = $this->getEntryName();
-        $childGroups = $this->ChildGroups($maxRecursiveLevel, $numberOfRecursions, $filter);
-        return $entryClassName::get()->filter(['ParentID' => $childGroups->column('ID')]);
+        $childGroups = $this->ChildGroups($maxRecursiveLevel, $groupFilter);
+        if (! $childGroups->exists()) {
+            $entries = $entryClassName::get()->filter(['ParentID' => $this->ID]);
+        } else {
+            $entries = $entryClassName::get()->filter(['ParentID' => array_merge([$this->ID], $childGroups->column('ID'))]);
+        }
+        if (! empty($filter)) {
+            $entries = $entries->filter($filter);
+        }
+        return $entries;
     }
 
     /**
