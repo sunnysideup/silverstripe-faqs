@@ -4,6 +4,7 @@ namespace Sunnysideup\Faqs;
 
 use Page;
 use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\DataList;
 
 /**
  * Class \Sunnysideup\Faqs\FaqHolderPage
@@ -85,6 +86,20 @@ class FaqHolderPage extends Page
         }
 
         return $arrayList;
+    }
+
+    /**
+     * Returns children FaqHolderPage pages of this FaqHolderPage.
+     *
+     * @param null|mixed $filter
+     *
+     * @return ArrayList (FaqHolderPages)
+     */
+    public function Entries(?int $maxRecursiveLevel = 99, ?int $numberOfRecursions = 0, $filter = null): DataList
+    {
+        $entryClassName = $this->getEntryName();
+        $childGroups = $this->ChildGroups($maxRecursiveLevel, $numberOfRecursions, $filter);
+        return $entryClassName::get()->filter(['ParentID' => $childGroups->column('ID')]);
     }
 
     /**

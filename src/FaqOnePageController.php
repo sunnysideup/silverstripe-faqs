@@ -11,10 +11,4 @@ use PageController;
  * @method \Sunnysideup\Faqs\FaqOnePage data()
  * @mixin \Sunnysideup\Faqs\FaqOnePage
  */
-class FaqOnePageController extends PageController
-{
-    protected function init()
-    {
-        parent::init();
-    }
-}
+class FaqOnePageController extends PageController {}

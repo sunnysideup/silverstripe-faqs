@@ -1,6 +1,6 @@
 <% if $Content %>
 <li class="$FirstLast faq-one">
-    <h3 class="faq-question" id="question-{$ID}"><a href="$Link">$Title</a></h3>
-    <div class="faq-answer" id="answer-{$ID}">$Content</div>
+    <h2 class="faq-question" id="question-{$URLSegment}-{$ID}"><a href="$Link">$Title</a></h2>
+    <div class="faq-answer" id="answer-{$URLSegment}-{$ID}">$Content</div>
 </li>
 <% end_if %>

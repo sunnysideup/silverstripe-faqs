@@ -24,38 +24,7 @@ class FaqHolderPageController extends PageController
      *
      * @return null|\SilverStripe\ORM\DataList
      */
-    public function Entries()
-    {
-        $array = [$this->ID => $this->ID];
-        $childGroups = $this->ChildGroups(4);
-        if ($childGroups) {
-            if ($childGroups->exists()) {
-                foreach ($childGroups->map('ID', 'ID') as $id) {
-                    $array[$id] = $id;
-                }
-            }
-        }
-        $singleton = DataObject::singleton(SiteTree::class);
-        $siteTreeTableName = $singleton->stageTable($singleton->config()->table_name, Versioned::get_stage());
-
-        $className = $this->dataRecord->getEntryName();
-
-        return $className::get()
-            ->filter(['ParentID' => $array, 'ShowInSearch' => 1])
-            ->leftJoin('' . $siteTreeTableName, '' . $siteTreeTableName . '.ParentID = MyParent.ID', 'MyParent')
-            ->leftJoin('' . $siteTreeTableName, 'MyParent.ParentID = MyGrandParent.ID', 'MyGrandParent')
-            ->leftJoin('' . $siteTreeTableName, 'MyGrandParent.ParentID = MyGreatGrandParent.ID', 'MyGreatGrandParent')
-            ->leftJoin('' . $siteTreeTableName, 'MyGreatGrandParent.ParentID = MyGreatGreatGrandParent.ID', 'MyGreatGreatGrandParent')
-            ->sort(
-                '
-                MyGreatGreatGrandParent.Sort,
-                MyGreatGrandParent.Sort,
-                MyGrandParent.Sort,
-                MyParent.Sort,
-                SiteTree' . $siteTreeTableName . '.Sort'
-            )
-        ;
-    }
+    public function Entries() {}
 
     public function MyParentHolder()
     {
