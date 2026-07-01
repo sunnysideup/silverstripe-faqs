@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sunnysideup\Faqs;
 
 use PageController;
@@ -7,8 +9,8 @@ use PageController;
 /**
  * Class \Sunnysideup\Faqs\FaqOnePageController
  *
- * @property \Sunnysideup\Faqs\FaqOnePage $dataRecord
- * @method \Sunnysideup\Faqs\FaqOnePage data()
- * @mixin \Sunnysideup\Faqs\FaqOnePage
+ * @property FaqOnePage $dataRecord
+ * @method FaqOnePage data()
+ * @mixin FaqOnePage
  */
 class FaqOnePageController extends PageController {}

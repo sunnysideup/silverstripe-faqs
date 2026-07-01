@@ -1,37 +1,37 @@
 {
-  "name": "sunnysideup/faqs",
-  "type": "silverstripe-vendormodule",
-  "description": "adds FAQ page and FAQ Holder page to your Silverstripe application",
-  "keywords": [
-    "Silverstripe-CMS",
-    "CMS",
-    "Silverstripe",
-    "faqs",
-    "frequently asked questions",
-    "hierarchy",
-    "summarise"
-  ],
-  "license": "BSD-3-Clause",
-  "authors": [
-    {
-      "name": "Nicolaas Francken",
-      "email": "modules@sunnysideup.co.nz",
-      "role": "lead developer"
+    "name": "sunnysideup/faqs",
+    "type": "silverstripe-vendormodule",
+    "description": "adds FAQ page and FAQ Holder page to your Silverstripe application",
+    "keywords": [
+        "Silverstripe-CMS",
+        "CMS",
+        "Silverstripe",
+        "faqs",
+        "frequently asked questions",
+        "hierarchy",
+        "summarise"
+    ],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Nicolaas Francken",
+            "email": "modules@sunnysideup.co.nz",
+            "role": "lead developer"
+        }
+    ],
+    "require": {
+        "silverstripe/recipe-cms": "^6.0"
+    },
+    "extra": {
+        "expose": [
+            "client/javascript",
+            "client/images",
+            "client/css"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "Sunnysideup\\Faqs\\": "src/"
+        }
     }
-  ],
-  "require": {
-    "silverstripe/recipe-cms": "^4.0 || ^5.0"
-  },
-  "extra": {
-    "expose": [
-      "client/javascript",
-      "client/images",
-      "client/css"
-    ]
-  },
-  "autoload": {
-    "psr-4": {
-      "Sunnysideup\\Faqs\\": "src/"
-    }
-  }
 }

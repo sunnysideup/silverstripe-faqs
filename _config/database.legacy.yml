@@ -1,4 +1,5 @@
-SilverStripe\ORM\DatabaseAdmin:
+
+SilverStripe\Dev\DbBuild:
   classname_value_remapping:
     FaqHolderPageController: Sunnysideup\Faqs\FaqHolderPageController
     FaqOnePage: Sunnysideup\Faqs\FaqOnePage

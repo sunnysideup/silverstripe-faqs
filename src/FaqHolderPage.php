@@ -2,8 +2,9 @@
 
 namespace Sunnysideup\Faqs;
 
+use Override;
+use SilverStripe\Model\List\ArrayList;
 use Page;
-use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataList;
 
 /**
@@ -30,9 +31,9 @@ class FaqHolderPage extends Page
 
     private static $table_name = 'FaqHolderPage';
 
-    private static $icon = 'sunnysideup/faqs: client/images/FaqHolderPage-file.png';
+    private static $cms_icon = 'sunnysideup/faqs: client/images/FaqHolderPage-file.png';
 
-    private static $description = 'A list of Frequently Asked Questions';
+    private static $class_description = 'A list of Frequently Asked Questions';
 
     //private static $default_parent = '';
 
@@ -50,12 +51,14 @@ class FaqHolderPage extends Page
      */
     private static $plural_name = 'FAQ Holder Pages';
 
+    #[Override]
     public function i18n_singular_name()
     {
         return _t('FaqHolderPage.SINGULARNAME', 'FAQ Holder Page');
     }
 
-    public function i18n_plural_name()
+    #[Override]
+    public function plural_name()
     {
         return _t('FaqHolderPage.PLURALNAME', 'FAQ Holder Pages');
     }
@@ -79,6 +82,7 @@ class FaqHolderPage extends Page
             if (! empty($filter)) {
                 $children = $children->filter($filter);
             }
+
             if ($children->exists()) {
                 ++$this->numberOfRecursionsGroups;
                 foreach ($children as $child) {
@@ -107,9 +111,11 @@ class FaqHolderPage extends Page
         } else {
             $entries = $entryClassName::get()->filter(['ParentID' => array_merge([$this->ID], $childGroups->column('ID'))]);
         }
-        if (! empty($filter)) {
+
+        if ($filter !== null && $filter !== []) {
             $entries = $entries->filter($filter);
         }
+
         return $entries;
     }
 
